@@ -132,6 +132,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+
                     <div class="trending__product">
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8">
@@ -146,104 +147,90 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-1.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+
+
+
+                            <div class="section">
+                                <!-- container -->
+                                <div class="container">
+
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="products-tabs">
+                                                <!-- tab -->
+                                                <div id="tab1" class="tab-pane active">
+                                                    <div class="products-slick" data-nav="#slick-nav-1">
+                                                        @foreach (var title in Model._TitlesViewModel.Titles)
+                                                        {
+                                                            <div class="product">
+                                                                <a href="/ProductInfo/@title.Id" class="product-link">
+                                                                    <div class="product-img">
+                                                                        <img src="@title.ImageUrl" alt="@title.TitleName" height="200" width="200">
+                                                                        <div class="product-label">
+                                                                            <span class="sale">-30%</span>
+                                                                            <span class="new">NEW</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-body">
+                                                                        <p class="product-category">@title.Date</p>
+                                                                        <h3 class="product-name">@title.Date</h3>
+                                                                        <h4 class="product-price">$@title.Date</h4>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                    <div id="slick-nav-1" class="products-slick-nav"></div>
+                                                </div>
+                                                <!-- /tab -->
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                    </div>
+
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-2.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-3.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Shingeki no Kyojin Season 3 Part 2</a></h5>
+
+
+
+
+
+
+                            @foreach (var title in Model.TitlesCurrent)
+                            {
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="img/trending/trend-1.jpg">
+                                            <div class="ep">@title.TitleName</div>
+                                            <div class="comment"><i class="fa fa-comments"></i> @title.Comments.Count()</div>
+                                            <div class="view"><i class="fa fa-eye"></i> @title.TitleAdditionalName</div>
+                                        </div>
+                                        <div class="product__item__text">
+                                            <ul>
+                                                <li>@title.Date</li>
+                                                <li>@title.Date</li>
+                                            </ul>
+                                            <h5><a href="#">@title.TitleName</a></h5>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-4.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Fullmetal Alchemist: Brotherhood</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-5.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Shiratorizawa Gakuen Koukou</a></h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/trending/trend-6.jpg">
-                                        <div class="ep">18 / 18</div>
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <ul>
-                                            <li>Active</li>
-                                            <li>Movie</li>
-                                        </ul>
-                                        <h5><a href="#">Code Geass: Hangyaku no Lelouch R2</a></h5>
-                                    </div>
-                                </div>
-                            </div>
+                            }
+                        </div>
+                        <div class="product__pagination">
+                            @if (Model._TitlesViewModel.Page * Model._TitlesViewModel.ItemsPerPage < Model._TitlesViewModel.TotalCount)
+                            {
+                                int nextPage = Model._TitlesViewModel.Page + 1;
+                                Model.TitlesCurrent = Model._TitlesViewModel.Titles
+                                .Skip((Model._TitlesViewModel.Page - 1) * Model._TitlesViewModel.ItemsPerPage)
+                                .Take(Model._TitlesViewModel.ItemsPerPage)
+                                .ToList();
+                                <a href=""><i class="fa fa-angle-double-right"></i></a>
+                            }
                         </div>
                     </div>
+
+
+
+
                     <div class="popular__product">
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8">

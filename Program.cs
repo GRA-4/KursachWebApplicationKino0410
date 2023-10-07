@@ -1,3 +1,5 @@
+using WebApplicationKinoAPI0510;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -21,5 +23,14 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+//app.MapGet("/",   (CommonOperations commonOperations) =>
+//{
+//    var titles = commonOperations.GetAllAsync<Title>().Result;
+
+//    return Results.Ok(titles);
+//});
+
+
 
 app.Run();
