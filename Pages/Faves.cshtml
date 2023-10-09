@@ -1,21 +1,29 @@
-﻿@page
-@model IndexModel
+﻿@page "{id}"
+@model WebApplicationKino0410.Pages.FavesModel
 @{
-    ViewData["Title"] = "Home page";
 }
 
-@* <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
- *@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Anime Template">
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>KinoRev</title>
+    <title>Anime | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -31,6 +39,7 @@
     <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+
 </head>
 
 <body>
@@ -45,7 +54,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="/Index">
+                        <a href="./index.html">
                             <img src="img/logoKinoRev.png" alt="">
                         </a>
                     </div>
@@ -54,28 +63,28 @@
                     <div class="header__nav">
                         <nav class="header__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="/Index">Homepage</a></li>
+                                <li class="active"><a href="./index.html">Homepage</a></li>
                                 <li>
-                                    <a asp-page="categories" asp-route-id="0">Categories <span class="arrow_carrot-down"></span></a>
+                                    <a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        @foreach(var g in Current.CGenre)
-                                        {
-                                            <li><a asp-page="categories" asp-route-id="@g.Id">@g.GenreName</a></li>
-
-                                        }
+                                        <li><a href="./categories.html">Categories</a></li>
+                                        <li><a href="./anime-details.html">Anime Details</a></li>
+                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                        <li><a href="./signup.html">Sign Up</a></li>
+                                        <li><a href="./login.html">Login</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/profile">Me</a></li>
+                                <li><a href="./blog.html">Our Blog</a></li>
+                                <li><a href="#">Contacts</a></li>
                             </ul>
                         </nav>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-
-                       @* тут логин *@
-
-                        <a href="/login"><span class="icon_profile"></span></a>
+                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                        <a href="./login.html"><span class="icon_profile"></span></a>
                     </div>
                 </div>
             </div>
@@ -83,66 +92,29 @@
         </div>
     </header>
     <!-- Header End -->
-    <!-- Hero Section Begin -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero__slider owl-carousel">
-                <div class="hero__items set-bg" data-setbg="@Model._TitlesViewModel.Titles.Find(i => i.Id == 3).ImageUrl;">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label"></div>
-                                <h2>@Model._TitlesViewModel.Titles.Find(i => i.Id == 3).TitleName;</h2>
-                                <p>@Model._TitlesViewModel.Titles.Find(i => i.Id == 3).TitleAdditionalName;</p>
-                                <a asp-page="anime-details" asp-route-id="3"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__items set-bg" data-setbg="@Model._TitlesViewModel.Titles.Find(i => i.Id == 16).ImageUrl;">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="hero__text">
-                                <div class="label"></div>
-                                <h2>@Model._TitlesViewModel.Titles.Find(i => i.Id == 16).TitleName;</h2>
-                                <p>@Model._TitlesViewModel.Titles.Find(i => i.Id == 16).TitleAdditionalName;</p>
-                                <a asp-page="anime-details" asp-route-id="16"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
     <!-- Product Section Begin -->
-    <section class="product spad">
+    <section class="product-page spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-
-                    <div class="trending__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>Tites</h4>
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Faves</h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a asp-page="categories" asp-route-id="0" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="updateContainer">
+                        <div class="row">
 
 
-
-
-
-                            @foreach (var title in Model.TitlesCurrent)
+                            @foreach (var title in Model.FaveTitles)
                             {
-								<div  class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="col-lg-4 col-md-6 col-sm-6">
                                     <a asp-page="anime-details" asp-route-id="@title.Id" />
                                     <div class="product__item">
                                         <div class="product__item__pic set-bg" data-setbg="@title.ImageUrl">
@@ -150,7 +122,7 @@
                                             <div class="comment"><i class="fa fa-comments"></i> @title.Comments.Count()</div>
                                         </div>
                                         <div class="product__item__text">
-                                           
+
                                             <ul>
                                                 @if (title.Genres != null)
                                                 {
@@ -162,7 +134,7 @@
                                                     }
                                                     <li>@ss</li>
                                                 }
-                                                
+
                                                 <li>@title.Date</li>
                                             </ul>
                                             <h5><a>@title.TitleName</a></h5>
@@ -170,48 +142,15 @@
                                     </div>
                                 </div>
                             }
-                        </div>
-                        @* @if (Model._TitlesViewModel.Page * Model._TitlesViewModel.ItemsPerPage < Model._TitlesViewModel.TotalCount)
-                        {
-                            int nextPage = Model._TitlesViewModel.Page + 1;
-                            Model.TitlesCurrent = Model._TitlesViewModel.Titles
-                            .Skip((Model._TitlesViewModel.Page - 1) * Model._TitlesViewModel.ItemsPerPage)
-                            .Take(Model._TitlesViewModel.ItemsPerPage)
-                            .ToList();
-                            <button class="accordion-button" id="updateButton">Обновить</button>
-                        } *@
-
-                        @* <div class="product__pagination">
-                            <a href="" id="nextButton"><i class="fa fa-angle-double-right"></i></a>
-                            @if (Model._TitlesViewModel.Page * Model._TitlesViewModel.ItemsPerPage < Model._TitlesViewModel.TotalCount)
-                            {
-                                int nextPage = Model._TitlesViewModel.Page + 1;
-                                Model.TitlesCurrent = Model._TitlesViewModel.Titles
-                                .Skip((Model._TitlesViewModel.Page - 1) * Model._TitlesViewModel.ItemsPerPage)
-                                .Take(Model._TitlesViewModel.ItemsPerPage)
-                                .ToList();
-
-                            }
 
 
-                            <script>
-                                document.getElementById("nextButton").addEventListener("click", function () {
-                                    // Получаем содержимое div с id "sourceDiv"
-                                    var sourceContent = document.getElementById("updateContainer").innerHTML;
-
-                                    // Присваиваем содержимое div с id "targetDiv" значению из "sourceDiv"
-                                    document.getElementById("updateContainer").innerHTML = sourceContent;
-                                });
-                            </script> *@
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
     <!-- Product Section End -->
-    <!-- Footer Section Begin -->
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="page-up">
@@ -221,14 +160,16 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="footer__logo">
-                        <a href="/Index"><img src="img/logoKinoRev.png" alt=""></a>
+                        <a href="./index.html"><img src="img/logoKinoRev.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="footer__nav">
-                        <ul
-                            <li><a href="https://derpibooru.org/profiles/Cyanidee">Cyanidee</a></li>
-                            <li><a href="">Bulatjan</a></li>
+                        <ul>
+                            <li class="active"><a href="./index.html">Homepage</a></li>
+                            <li><a href="./categories.html">Categories</a></li>
+                            <li><a href="./blog.html">Our Blog</a></li>
+                            <li><a href="#">Contacts</a></li>
                         </ul>
                     </div>
                 </div>
@@ -265,5 +206,21 @@
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
 
-
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

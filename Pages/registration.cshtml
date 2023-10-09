@@ -1,0 +1,236 @@
+﻿@page
+@model WebApplicationKino0410.Pages.registrationModel
+@{
+}
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KinoRev</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- СТИЛЬ ПОМЕНЯН -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/plyr.css" type="text/css">
+    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="/Index">
+                            <img src="img/logoKinoRev.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li><a href="/Index">Homepage</a></li>
+                                <li>
+                                    <a asp-page="categories" asp-route-id="0">Categories <span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        @foreach (var g in Current.CGenre)
+                                        {
+                                            <li><a asp-page="categories" asp-route-id="@g.Id">@g.GenreName</a></li>
+
+                                        }
+                                    </ul>
+                                </li>
+                                <li><a href="/profile">Me</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__right">
+
+                        @* тут логин *@
+
+                        <a href="/login"><span class="icon_profile"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Header End -->
+    <!-- Normal Breadcrumb Begin -->
+    <section class="normal-breadcrumb set-bg" data-setbg="img/normal-breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="normal__breadcrumb__text">
+                        <h2>Login</h2>
+                        <p>Welcome to KinoRev.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Normal Breadcrumb End -->
+    <!-- Login Section Begin -->
+    <section class="login spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login__form">
+                        <h3>Registration</h3>
+                        <form onsubmit="return validateForm()" method="post" asp-page-handler="Reg">
+                            <div class="input__item">
+                                <input minlength="4" type="text" id="userNameInput" name="userNameInput" placeholder="UserName">
+                                <span class="icon_profile"></span>
+                            </div>
+                            <div class="input__item">
+                                <input minlength="4" type="text" id="emailInput" name="emailInput" placeholder="Email address">
+                                <span class="icon_mail"></span>
+                            </div>
+                            <div class="input__item">
+                                <input minlength="8" type="password" id="passwordInput" name="passwordInput" placeholder="Password">
+                                <span class="icon_lock"></span>
+                            </div>
+                            <div class="input__item">
+                                <input minlength="8" type="password" id="repeatPasswordInput" name="repeatPasswordInput" placeholder="Password verify">
+                                <span class="icon_lock"></span>
+                            </div>
+                            <button type="submit" class="site-btn">Reg Now</button>
+                        </form>
+                        <script>
+                            function validateForm() {
+                                var password = document.getElementById("passwordInput").value;
+
+                                // Проверяем, содержит ли пароль хотя бы одну строчную букву
+                                var lowercaseRegex = /[a-z]/;
+                                var uppercaseRegex = /[A-Z]/;
+                                var digitRegex = /[0-9]/;
+                                if ((!lowercaseRegex.test(password)) || (!uppercaseRegex.test(password)) || (!digitRegex.test(password))) {
+                                    alert("Пароль должен содержать хотя бы одну строчную букву, заглавную букву и цифру");
+                                    return false;
+                                }
+
+                                var userName = document.getElementById("userNameInput").value;
+
+                                // Проверяем длину имени пользователя
+                                if ( (/\s/.test(userNameInput))) {
+                                    alert("Имя пользователя должно содержать не менее 4 символов и  не должно содержать пробелы.");
+                                    return false;
+                                }
+
+                                var userEmail = document.getElementById("emailInput").value;
+
+                                // Проверяем длину имени пользователя
+                                if ((/\s/.test(userNameInput))) {
+                                    alert("Email содержать не менее 4 символов и не должен содержать пробелы.");
+                                    return false;
+                                }
+                                
+                                return true;
+                            }
+                        </script>
+
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="login__register">
+                        <h3>Have An Account Already?</h3>
+                        <a asp-page="/login" class="primary-btn">Log In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Login Section End -->
+    <!-- Footer Section Begin -->
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="page-up">
+            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer__logo">
+                        <a href="/Index"><img src="img/logoKinoRev.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer__nav">
+                        <ul
+                            <li><a href="https://derpibooru.org/profiles/Cyanidee">Cyanidee</a></li>
+                            <li><a href="">Bulatjan</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form method="post" asp-page="/categories" asp-page-handler="Search" asp-route-id="query" class="search-model-form">
+                <input class="input" name="query" id="query" placeholder="Search here.....">
+                <button type="submit" class="search-btn"><i class="fa fa-location-arrow"></i></button>
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+    <!-- ПОМЕНЯНО -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/player.js"></script>
+    <script src="../js/jquery.nice-select.min.js"></script>
+    <script src="../js/mixitup.min.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
+
+
+</body>

@@ -28,6 +28,7 @@ namespace WebApplicationKino0410.Pages
         public TitlesViewModel _TitlesViewModel;
         public List<Title> AllTitles;
         public List<Title> TitlesCurrent;
+        
 
         public async void OnGet()
         {
@@ -39,6 +40,7 @@ namespace WebApplicationKino0410.Pages
             var l = commonOperationsTitle1.GetAllAsync<Title>();
             _TitlesViewModel.Titles = l.Result.ToList();
             _TitlesViewModel.TotalCount =  _TitlesViewModel.Titles.Count();
+
 
             TitlesCurrent = _TitlesViewModel.Titles
         .Skip((_TitlesViewModel.Page - 1) * _TitlesViewModel.ItemsPerPage)

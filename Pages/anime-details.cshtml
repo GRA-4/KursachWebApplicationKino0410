@@ -1,0 +1,261 @@
+﻿@page "{id}"
+@model WebApplicationKino0410.Pages.anime_detailsModel
+@{
+}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KinoRev</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- СТИЛЬ ПОМЕНЯН -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/plyr.css" type="text/css">
+    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="/Index">
+                            <img src="img/logoKinoRev.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li><a href="/Index">Homepage</a></li>
+                                <li>
+                                    <a asp-page="categories" asp-route-id="0">Categories <span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
+                                        @foreach(var g in Current.CGenre)
+                                        {
+                                            <li><a asp-page="categories" asp-route-id="@g.Id">@g.GenreName</a></li>
+
+                                        }
+                                    </ul>
+                                </li>
+                                <li><a href="/profile">Me</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__right">
+
+                       @* тут логин *@
+
+                        <a href="/login"><span class="icon_profile"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+    <!-- Breadcrumb Begin -->
+    <!-- Breadcrumb End -->
+    <!-- Anime Section Begin -->
+    <section class="anime-details spad">
+        <div class="container">
+            <div class="anime__details__content">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="anime__details__pic set-bg" data-setbg="@Model.Title.ImageUrl">
+                            <div class="comment"><i class="fa fa-comments"></i> @Model.Title.Comments.Count()</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="anime__details__text">
+                            <div class="anime__details__title">
+                                <h3>@Model.Title.TitleName</h3>
+                                <span>@Model.Title.TitleAdditionalName</span>
+                            </div>
+                            <div class="anime__details__rating">
+                                <div class="anime__details__form">
+
+                                    <form method="post" asp-page-handler="MakeVote">
+                                        <input type="hidden" name="id" value="@Model.Title.Id" />
+                                        
+                                        @if(Current.CUser != null){
+                                        <input type="number" min="1" max="5" name="count" value="@Model.Title.Votes.FirstOrDefault(l => l.UserId == Current.CUser.Id)).Rating" />
+                             
+                                 <button type="submit"><i class="fa fa-location-arrow"></i> Rate</button>}
+                                 </form>
+                                </div>
+                                <span>@Model.Title.Votes.Count() Vote(s)</span>
+                            </div>
+                            <p>
+                                @Model.Title.Description
+                            </p>
+                            <div class="anime__details__widget">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <ul>
+                                            <li><span>Date aired:</span>  @Model.Title.Date</li>
+                                            <li><span>Genre:</span> 
+                                                @foreach(var g in Model.Title.Genres){
+
+                                                    <a asp-page="categories" asp-route-id="@g.Id">@g.GenreName</a>
+                                                    }</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <ul>
+                                            @if(Model.Title.Votes != null){
+                                            <li><span>Rating:</span> @Model.VoteCount</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="anime__details__btn">
+
+                                @* <a  class="follow-btn" method="post" asp-page-handler="ToFaves">
+                                        <input type="hidden" name="id" value="@Model.Title.Id" />
+                                        <i class="fa fa-heart-o"></i> To faves</a> *@
+
+
+                                        <form method="post" asp-page-handler="ToFaves">
+                                        <input type="hidden" name="id" value="@Model.Title.Id" />
+                                        @if(Current.CUser != null) {
+                                            @if((Model.Title.FaveLists.FirstOrDefault(l => l.UserId == Current.CUser.Id)) != null) {
+                                                <button class="follow-btn" type="submit"><i class="fa fa-heart"></i> To faves(added)</button>}
+                                                else if((Model.Title.FaveLists.FirstOrDefault(l => l.UserId == Current.CUser.Id)) == null) {
+                                                    <button class="follow-btn" type="submit"><i class="fa fa-heart-o"></i> To faves(not added)</button>} else {   } }
+                                    </form>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <div class="anime__details__review">
+                        <div class="section-title">
+                            <h5>Reviews</h5>
+                        </div>
+
+                        @foreach(var c in Model.Title.Comments)
+                        {
+                            <div class="anime__review__item">
+                            <div class="anime__review__item__pic">
+                                <img src="@c.User.ImageUrl" alt="">
+                                <a asp-page="profile" asp-route-id="@c.User.Id" />
+                            </div>
+                            <div class="anime__review__item__text">
+                                <h6>@c.User.UserName   <span>@c.Date.ToString()</span></h6>
+                                <p>
+                                    @c.TextContent
+                                </p>
+                            </div>
+                        </div>
+                        }
+                        
+
+
+                    </div>
+                    <div class="anime__details__form">
+                        <div class="section-title">
+                            <h5>Your Comment</h5>
+                        </div>
+                        <form method="post" enctype="multipart/form-data"  asp-page-handler="AddComment">
+                            @if(Model.User != null){
+                            <button id="AddCommentButton" type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                    }
+                                                            <input type="hidden" name="id" value="@Model.Title.Id" />
+
+                            <textarea id="commentContent" name="commentContent" placeholder="Your Comment" required></textarea>
+                            <button id="AddCommentButton" type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+                        </form>
+                        </div>
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Anime Section End -->
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="page-up">
+            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer__logo">
+                        <a href="/Index"><img src="img/logoKinoRev.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer__nav">
+                        <ul
+                            <li><a href="https://derpibooru.org/profiles/Cyanidee">Cyanidee</a></li>
+                            <li><a href="">Bulatjan</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form method="post" asp-page="/categories" asp-page-handler="Search" asp-route-id="query" class="search-model-form">
+                <input class="input" name="query" id="query" placeholder="Search here.....">
+                <button type="submit" class="search-btn"><i class="fa fa-location-arrow"></i></button>
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+
+    <!-- ПОМЕНЯНО -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/player.js"></script>
+    <script src="../js/jquery.nice-select.min.js"></script>
+    <script src="../js/mixitup.min.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
+
+</body>

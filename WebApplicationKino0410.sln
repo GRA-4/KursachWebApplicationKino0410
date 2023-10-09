@@ -5,9 +5,11 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationKino0410", "WebApplicationKino0410.csproj", "{71E4DBDE-8367-4F1E-9DAB-F297A3D5846E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationKinoAPI0510", "..\WebApplication0510\WebApplicationKinoAPI0510.csproj", "{8D27C488-FF57-472D-B43A-25AE7E70D799}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationKinoAPI0510", "..\WebApplication0510\WebApplicationKinoAPI0510.csproj", "{8D27C488-FF57-472D-B43A-25AE7E70D799}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppKinoApp0510", "..\ConsoleAppKinoApp0510\ConsoleAppKinoApp0510.csproj", "{D46ADD45-E06C-4C2E-9A32-21F5155FC0E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppKinoApp0510", "..\ConsoleAppKinoApp0510\ConsoleAppKinoApp0510.csproj", "{D46ADD45-E06C-4C2E-9A32-21F5155FC0E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppKino0410", "..\WpfAppKino0410\WpfAppKino0410.csproj", "{F8FD5511-4957-4164-8681-5D0ACC6F1087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D46ADD45-E06C-4C2E-9A32-21F5155FC0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D46ADD45-E06C-4C2E-9A32-21F5155FC0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D46ADD45-E06C-4C2E-9A32-21F5155FC0E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8FD5511-4957-4164-8681-5D0ACC6F1087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8FD5511-4957-4164-8681-5D0ACC6F1087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8FD5511-4957-4164-8681-5D0ACC6F1087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8FD5511-4957-4164-8681-5D0ACC6F1087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
