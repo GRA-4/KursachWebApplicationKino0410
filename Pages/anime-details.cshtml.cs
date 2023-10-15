@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApplicationKinoAPI0510;
+using WebApplicationKinoAPI0510.Additional;
+using WebApplicationKinoAPI0510.Models;
 
 namespace WebApplicationKino0410.Pages
 {
@@ -85,8 +87,9 @@ namespace WebApplicationKino0410.Pages
                 var addedComment = await commonOperations2.AddEntityAsync<Comment>(newComment);
                 VoteCount = await GetVoteCountAsync(id);
 
-                // Вернуть успешный результат или другой ответ клиенту
-                return await OnGetAsync(id);
+                    // Вернуть успешный результат или другой ответ клиенту
+                    //return await OnGetAsync(id);
+                    return await OnGetAsync(id);
                 }
                 else
                 {

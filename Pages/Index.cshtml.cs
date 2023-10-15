@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Linq;
 using WebApplicationKinoAPI0510;
+using WebApplicationKinoAPI0510.Additional;
 using static WebApplicationKino0410.Pages.IndexModel;
 
 namespace WebApplicationKino0410.Pages

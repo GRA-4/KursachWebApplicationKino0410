@@ -1,11 +1,12 @@
 ﻿using WebApplicationKinoAPI0510;
+using WebApplicationKinoAPI0510.Additional;
 
 namespace WebApplicationKino0410
 {
     public class Current
     {
         public static List<Genre> CGenre { get; set; } = getHeaderGenre().Result;
-        public static User CUser { get; set; }/* = getTestUser().Result;*/
+        public static User CUser { get; set; } = getTestUser().Result;
         private static async Task<User> getTestUser()
         {
             CommonOperations commonOperations = new CommonOperations();

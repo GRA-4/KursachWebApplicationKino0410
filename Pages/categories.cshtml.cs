@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.IdentityModel.Tokens;
 using WebApplicationKinoAPI0510;
+using WebApplicationKinoAPI0510.Additional;
 
 namespace WebApplicationKino0410.Pages
 {
